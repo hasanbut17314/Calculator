@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background-image: url('/3d_cube_figure_dark_tunnel_backlight_wallpaper_background_4k_hd-3840x2160.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    h2 {
+        color: #f0f0f0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        letter-spacing: 1.2px;
+        margin: 10px 0;
+    }
+
+    .container {
+        background-color: rgb(0 0 0 / 74%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 290px;
+        height: 350px;
+        margin: auto;
+        position: relative;
+        top: 100px;
+        border-radius: 14px;
+        z-index: 2;
+    }
+
+    button {
+        border: 2px solid black;
+        border-radius: 4px;
+        background-color: rgb(225, 200, 7);
+        margin: 4px 0;
+        padding: 7px 14px;
+        cursor: pointer;
+    }
+
+    input {
+        font-size: 0.8em;
+        padding: 2px 4px;
+        border-radius: 5px;
+        height: 26px;
+        margin: 5px 0;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>Calculator</h2>
+        <div class="row">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>*</button>
+        </div>
+        <div class="row">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>/</button>
+        </div>
+        <div class="row">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>+</button>
+        </div>
+        <div class="row">
+            <button>0</button>
+            <button>C</button>
+            <button>-</button>
+            <button>=</button>
+        </div>
+        <input id="input" type="text">
+    </div>
+</body>
+<script>
+    let buttons = document.querySelectorAll("button")
+    let results = document.querySelector("#input")
+    Array.from(buttons).forEach((button) => {
+        button.addEventListener("click", (e) => {
+            if (e.target.innerHTML == "=") {
+                results.value = eval(results.value)    
+            }
+            else if(e.target.innerHTML == "C") {
+            clearAll()
+            }
+            else{
+                results.value += e.target.innerHTML
+            }
+        })
+    });
+    function clearAll() {
+        results.value = "";
+    }
+</script>
+
+</html>
